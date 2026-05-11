@@ -19,6 +19,16 @@
           "args": ["${CLAUDE_PLUGIN_ROOT}/dist/cli.js", "stdio"]
         }
       }
+    },
+    {
+      "name": "claude-mnemo",
+      "source": {
+        "source": "git-subdir",
+        "url": "KawaiiLLM/claude-mnemo",
+        "path": "plugin"
+      },
+      "version": "0.2.11",
+      "description": "Structured memory system for Claude Code powered by Mnemosyne. Hooks + skills for recall, remember, replay, timeline."
     }
   ]
 }

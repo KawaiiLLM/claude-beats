@@ -21,18 +21,18 @@ KawaiiLLM 的 Claude Code 插件 marketplace。
 | Plugin | Version | Repo | 用途 |
 |---|---|---|---|
 | `bilibili-mcp` | 0.3.0 | [KawaiiLLM/bilibili_mcp](https://github.com/KawaiiLLM/bilibili_mcp) | Bilibili MCP Server,CookieCloud 登录 + 完整反爬基线 |
+| `claude-mnemo` | 0.2.11 | [KawaiiLLM/claude-mnemo](https://github.com/KawaiiLLM/claude-mnemo) (`plugin/` 子目录) | 结构化记忆系统:recall/remember/replay/timeline 四个 skill 加 hooks |
 
 ## 添加新插件
 
-在 `.claude-plugin/marketplace.json` 的 `plugins` 数组里追加:
+在 `.claude-plugin/marketplace.json` 的 `plugins` 数组里追加。两种 source 形态:
+
+### 仓库根就是 plugin(整个仓库是 plugin)
 
 ```json
 {
   "name": "<plugin-id>",
-  "source": {
-    "source": "github",
-    "repo": "KawaiiLLM/<repo-name>"
-  },
+  "source": { "source": "github", "repo": "KawaiiLLM/<repo>" },
   "version": "<x.y.z>",
   "description": "...",
   "strict": false,
@@ -45,10 +45,27 @@ KawaiiLLM 的 Claude Code 插件 marketplace。
 }
 ```
 
+### Plugin 在仓库子目录(monorepo)
+
+```json
+{
+  "name": "<plugin-id>",
+  "source": {
+    "source": "git-subdir",
+    "url": "KawaiiLLM/<repo>",
+    "path": "plugin"
+  },
+  "version": "<x.y.z>",
+  "description": "..."
+}
+```
+
+子目录里必须有 `.claude-plugin/plugin.json`(strict 模式),hooks/skills 按约定目录自动发现。
+
 target 仓库需要满足:
 - 可被 Claude Code clone(public 或配置过 SSH key)
-- 包含 `command` 引用的可执行文件(预编译 dist 或 binary)
-- 若有 env vars 依赖,在 plugin README 里说明,Claude Code 不会代为配置
+- 如果要跑 MCP server,需包含 `command` 引用的可执行文件(预编译 dist 或 binary)
+- env vars 依赖在 plugin README 里说明,Claude Code 不会代为配置
 
 ## License
 
