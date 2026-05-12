@@ -21,7 +21,7 @@ KawaiiLLM 的 Claude Code 插件 marketplace。
 | Plugin | Version | Repo | 用途 |
 |---|---|---|---|
 | `bilibili-mcp` | 0.3.0 | [KawaiiLLM/bilibili_mcp](https://github.com/KawaiiLLM/bilibili_mcp) | Bilibili MCP Server,CookieCloud 登录 + 完整反爬基线 |
-| `claude-mnemo` | 0.2.11 | [KawaiiLLM/claude-mnemo](https://github.com/KawaiiLLM/claude-mnemo) (`plugin/` 子目录) | 结构化记忆系统:recall/remember/replay/timeline 四个 skill 加 hooks |
+| `claude-mnemo` | 0.2.12 | [KawaiiLLM/claude-mnemo](https://github.com/KawaiiLLM/claude-mnemo) (`plugin/` 子目录) | 结构化记忆系统:recall/remember/replay/timeline 四个 skill 加 hooks |
 
 ## 添加新插件
 
